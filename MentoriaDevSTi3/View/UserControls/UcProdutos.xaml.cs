@@ -37,12 +37,17 @@ namespace MentoriaDevSTi3.View.UserControls
             LimparCampos();
         }
 
-
         private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
             var produto = (sender as Button).Tag as ProdutoViewModel;
 
             PreencherCampos(produto);
+        }
+
+        private void TxtValor_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void PreencherCampos(ProdutoViewModel produto)
@@ -90,10 +95,5 @@ namespace MentoriaDevSTi3.View.UserControls
 
         }
 
-        private void TxtValor_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
     }
 }
