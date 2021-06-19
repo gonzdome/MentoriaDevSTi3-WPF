@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MentoriaDevSTi3.View.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,22 @@ namespace MentoriaDevSTi3.View
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void BtnProdutos_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new UcProdutos();
+        }
+
+        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new UcClientes();
+
+        }
+
+        private void BtnPedido_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

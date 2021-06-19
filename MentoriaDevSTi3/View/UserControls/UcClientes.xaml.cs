@@ -27,5 +27,10 @@ namespace MentoriaDevSTi3.View.UserControls
         {
 
         }
+
+        private void BtnAlterar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
