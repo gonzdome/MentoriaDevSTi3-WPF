@@ -35,21 +35,21 @@
             <Button x:Name="BtnProdutos"
                     Grid.Row="1" Content="Produtos" BorderThickness="0"
                     Style="{StaticResource BtnMenu}"
-                    Click="BtnProdutos_Click"/>
+                    Click="BtnMenu_Click"/>
 
             <Border Grid.Row="1" Style="{StaticResource BrdMenu}"/>
 
             <Button x:Name="BtnClientes"
                     Grid.Row="2" Content="Clientes" BorderThickness="0"
                     Style="{StaticResource BtnMenu}"
-                     Click="BtnClientes_Click"/>
+                     Click="BtnMenu_Click"/>
 
             <Border Grid.Row="2" Style="{StaticResource BrdMenu}"/>
 
             <Button x:Name="BtnPedido"
                     Grid.Row="3" Content="Pedido" BorderThickness="0"
                     Style="{StaticResource BtnMenu}"
-                     Click="BtnPedido_Click"/>
+                     Click="BtnMenu_Click"/>
 
             <Border Grid.Row="3" Style="{StaticResource BrdMenu}"/>
 

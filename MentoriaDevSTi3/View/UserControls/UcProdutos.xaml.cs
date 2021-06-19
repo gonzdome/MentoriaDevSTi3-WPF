@@ -12,6 +12,7 @@ namespace MentoriaDevSTi3.View.UserControls
     public partial class UcProdutos : UserControl
     {
         private UcProdutoViewModel UcProdutoVm = new UcProdutoViewModel();
+
         public UcProdutos()
         {
             InitializeComponent();
@@ -23,7 +24,8 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
         {
-            if(!ValidarProduto()) return;
+            if(!ValidarProduto())
+                return;
 
             if (UcProdutoVm.Alteracao)
             {

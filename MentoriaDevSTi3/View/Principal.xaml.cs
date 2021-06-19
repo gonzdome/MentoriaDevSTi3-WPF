@@ -23,20 +23,31 @@ namespace MentoriaDevSTi3.View
             InitializeComponent();
         }
 
-        private void BtnProdutos_Click(object sender, RoutedEventArgs e)
+        private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
-            Conteudo.Content = new UcProdutos();
+            InicializarUc(sender);
         }
 
-        private void BtnClientes_Click(object sender, RoutedEventArgs e)
+
+        private void InicializarUc(object sender)
         {
-            Conteudo.Content = new UcClientes();
-
-        }
-
-        private void BtnPedido_Click(object sender, RoutedEventArgs e)
-        {
-
+            if(sender is Button btn)
+            {
+                switch (btn.Name)
+                {
+                    case nameof(BtnProdutos):
+                        Conteudo.Content = new UcProdutos();
+                        break;
+                    case nameof(BtnClientes):
+                        Conteudo.Content = new UcClientes();
+                        break;
+                    case nameof(BtnPedido):
+                        //Conteudo.Content = new UcPedido();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
