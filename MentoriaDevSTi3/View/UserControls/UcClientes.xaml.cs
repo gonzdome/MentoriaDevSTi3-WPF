@@ -31,22 +31,64 @@ namespace MentoriaDevSTi3.View.UserControls
 
             if (UcClienteVm.Alteracao)
             {
-                //AlterarProduto();
+                AlterarCliente();
             }
             else
             {
-                //AdicionarProduto();
+                AdicionarCliente();
             }
 
-            //LimparCampos();
+            LimparCampos();
         }
 
-    private void BtnAlterar_Click(object sender, RoutedEventArgs e)
+        private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
+            var cliente = (sender as Button).Tag as ClienteViewModel;
 
+            PreencherCampos(cliente);
         }
 
-    private bool ValidarCliente()
+        private void PreencherCampos(ClienteViewModel cliente)
+        {
+            UcClienteVm.Nome = cliente.Nome;
+            UcClienteVm.DataNascimento = cliente.DataNascimento;
+            UcClienteVm.Cep = cliente.Cep;
+            UcClienteVm.Endereco = cliente.Endereco;
+            UcClienteVm.Cidade = cliente.Cidade;
+
+            UcClienteVm.Alteracao = true;
+        }
+
+        private void AdicionarCliente()
+        {
+            var novoCliente = new ClienteViewModel
+            {
+                Nome = UcClienteVm.Nome,
+                DataNascimento = UcClienteVm.DataNascimento,
+                Cep = UcClienteVm.Cep,
+                Endereco = UcClienteVm.Endereco,
+                Cidade = UcClienteVm.Cidade
+            };
+
+            UcClienteVm.ClientesAdicionados.Add(novoCliente);
+        }
+
+        private void AlterarCliente()
+        {
+            //desenvolvido no banco de dados
+        }
+
+        private void LimparCampos()
+        {
+            UcClienteVm.Nome = "";
+            UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
+            UcClienteVm.Cep = 0;
+            UcClienteVm.Endereco = "";
+            UcClienteVm.Cidade = "";
+            UcClienteVm.Alteracao = false;
+        }
+
+        private bool ValidarCliente()
     {
         if (string.IsNullOrEmpty(UcClienteVm.Nome))
         {
