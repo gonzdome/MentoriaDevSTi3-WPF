@@ -1,5 +1,6 @@
 ﻿using MentoriaDevSTi3.ViewModel;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -46,6 +47,12 @@ namespace MentoriaDevSTi3.View.UserControls
             var cliente = (sender as Button).Tag as ClienteViewModel;
 
             PreencherCampos(cliente);
+        }
+
+        private void TxtCep_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void PreencherCampos(ClienteViewModel cliente)
