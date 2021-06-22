@@ -32,6 +32,8 @@ namespace MentoriaDevSTi3.View.UserControls
         private void BtnAdicionarItem_Click(object sender, RoutedEventArgs e)
         {
             AdicionarItem();
+
+            LimparCampos();
         }
 
         private void BtnFinalizarPedido_Click(object sender, RoutedEventArgs e)
@@ -83,6 +85,11 @@ namespace MentoriaDevSTi3.View.UserControls
             UcPedidoVm.ItensAdicionados.Add(itemVm);
 
             UcPedidoVm.ValorTotalPedido = UcPedidoVm.ItensAdicionados.Sum(i => i.ValorTotalItem);
+        }
+
+        private void LimparCampos()
+        {
+            UcPedidoVm.Quantidade = 1;
         }
     }
 }
