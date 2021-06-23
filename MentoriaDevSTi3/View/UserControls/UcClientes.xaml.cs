@@ -94,15 +94,15 @@ namespace MentoriaDevSTi3.View.UserControls
             UcClienteVm.Cidade = "";
             UcClienteVm.Alteracao = false;
         }
-
         private bool ValidarCliente()
-    {
+        {
+
         if (string.IsNullOrEmpty(UcClienteVm.Nome))
         {
             MessageBox.Show("O campo 'Nome' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
             return false;
-        }  
 
+        }
         if (UcClienteVm.Cep is 0)
         {
             MessageBox.Show("O campo 'Cep' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -113,14 +113,14 @@ namespace MentoriaDevSTi3.View.UserControls
         {
             MessageBox.Show("O campo 'Endereço' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
             return false;
-        }  
 
+        }  
         if (string.IsNullOrEmpty(UcClienteVm.Cidade))
         {
             MessageBox.Show("O campo 'Cidade' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
             return false;
-        }
 
+        }
         return true;
 
         }
