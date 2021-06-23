@@ -99,7 +99,25 @@ namespace MentoriaDevSTi3.View.UserControls
     {
         if (string.IsNullOrEmpty(UcClienteVm.Nome))
         {
-            MessageBox.Show("O campo 'Nome' é obrigatório", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("O campo 'Nome' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+            return false;
+        }  
+
+        if (UcClienteVm.Cep is 0)
+        {
+            MessageBox.Show("O campo 'Cep' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+            return false;
+
+        }     
+        if (string.IsNullOrEmpty(UcClienteVm.Endereco))
+        {
+            MessageBox.Show("O campo 'Endereço' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+            return false;
+        }  
+
+        if (string.IsNullOrEmpty(UcClienteVm.Cidade))
+        {
+            MessageBox.Show("O campo 'Cidade' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
             return false;
         }
 
