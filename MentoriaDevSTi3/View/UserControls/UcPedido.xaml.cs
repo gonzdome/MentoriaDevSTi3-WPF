@@ -31,7 +31,12 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void BtnAdicionarItem_Click(object sender, RoutedEventArgs e)
         {
-            AdicionarItem();
+            if (!ValidarPedido())
+                return;
+            else
+            {
+                AdicionarItem();
+            }
 
             LimparCampos();
         }
@@ -91,5 +96,18 @@ namespace MentoriaDevSTi3.View.UserControls
         {
             UcPedidoVm.Quantidade = 1;
         }
+
+        private bool ValidarPedido()
+        {
+            if (CmbProduto.SelectedItem is null)
+            {
+                MessageBox.Show("Selecione um produto!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            return true;
+
+        }
+
     }
 }
