@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Resources/TextBox.xaml"/>
                 <ResourceDictionary Source="Resources/TextBlock.xaml"/>
                 <ResourceDictionary Source="Resources/ComboBox.xaml"/>
+                <ResourceDictionary Source="Resources/PasswordBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>         
     </Application.Resources>

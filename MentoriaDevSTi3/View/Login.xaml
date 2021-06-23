@@ -33,16 +33,16 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Background="#FF1A1D40">
-                        <Label Content="Log-In" Foreground="White" Margin="20,20,20,10"/>
+                    <StackPanel x:Name="login" Grid.Row="0" Background="#FF1A1D40">
+                        <Label Content="Login" Foreground="White" Margin="20,20,20,10"/>
                         <TextBox Margin="20,0,20,0"/>
                     </StackPanel>
 
                     <Border Grid.Row="0" Style="{StaticResource BrdMenu}"/>
 
-                    <StackPanel Grid.Row="1" Background="#FF1A1D40">
+                    <StackPanel x:Name="senha" Grid.Row="1" Background="#FF1A1D40">
                         <Label Content="Senha" Foreground="White" Margin="20,20,20,10" VerticalContentAlignment="Center"/>
-                        <TextBox Margin="20,0,20,0"/>
+                        <PasswordBox Margin="20,0,20,0"/>
                     </StackPanel>
 
                     <Border Grid.Row="1" Style="{StaticResource BrdMenu}"/>
