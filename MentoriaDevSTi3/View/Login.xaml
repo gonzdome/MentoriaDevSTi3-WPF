@@ -1,0 +1,87 @@
+﻿<Window x:Class="MentoriaDevSTi3.View.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MentoriaDevSTi3.View"
+        mc:Ignorable="d"
+        Title="Login" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Background="#FFEAEAEA">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="MentoriaDevSTi3" 
+                       HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                       FontSize="45" FontWeight="Bold" Foreground="#FF1A1D40"/>
+
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Background="#FF1A1D40">
+                        <Label Content="Log-In" Foreground="White" Margin="20,20,20,10"/>
+                        <TextBox Margin="20,0,20,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Row="0" Style="{StaticResource BrdMenu}"/>
+
+                    <StackPanel Grid.Row="1" Background="#FF1A1D40">
+                        <Label Content="Senha" Foreground="White" Margin="20,20,20,10" VerticalContentAlignment="Center"/>
+                        <TextBox Margin="20,0,20,0"/>
+                    </StackPanel>
+
+                    <Border Grid.Row="1" Style="{StaticResource BrdMenu}"/>
+
+
+                </Grid>
+
+                <Grid Grid.Row="2" Background="#FF1A1D40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                        x:Name="BtnEntrar" Style="{StaticResource BtnRetangular}" Content="Entrar"
+                        Background="Gray" Foreground="White" Height="25" Width="70" 
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Margin="10,0,0,0"
+                        Click="BtnEntrar_Click"/>
+
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,21,0">
+
+                        <Label Content="Não possui conta ainda?"
+                           Foreground="White"
+                           FontSize="14" 
+                           VerticalAlignment="Center"/>
+
+                        <Button Grid.Column="1"
+                        x:Name="BtnRegistrarConta" Style="{StaticResource BtnRetangular}" Content="Registre-se"
+                        Background="Gray" Foreground="White"
+                        Height="25" Width="70"
+                        VerticalAlignment="Center"
+                        Click="BtnRegistrarConta_Click"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
