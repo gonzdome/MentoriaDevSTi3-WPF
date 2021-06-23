@@ -22,12 +22,12 @@ namespace MentoriaDevSTi3.View
             InitializeComponent();
         }
 
-        private void BtnRetornar_Click(object sender, RoutedEventArgs e)
+        private void BtnCadastrar_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnCadastrar_Click(object sender, RoutedEventArgs e)
+        private void BtnVoltar_Click(object sender, RoutedEventArgs e)
         {
 
         }

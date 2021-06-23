@@ -90,11 +90,11 @@
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,21,0">
 
                         <Button Grid.Column="1"
-                        x:Name="BtnRetornar" Style="{StaticResource BtnRetangular}" Content="Retornar"
+                        x:Name="BtnVoltar" Style="{StaticResource BtnRetangular}" Content="Voltar"
                         Background="Gray" Foreground="White"
                         Height="25" Width="70"
                         VerticalAlignment="Center"
-                        Click="BtnRetornar_Click"/>
+                        Click="BtnVoltar_Click"/>
 
                     </StackPanel>
 
