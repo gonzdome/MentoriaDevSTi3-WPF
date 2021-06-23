@@ -27,7 +27,7 @@ namespace MentoriaDevSTi3.View.UserControls
             {
                 UcPedidoVm.ValorUnit = produto.Valor;
             }
-        }
+        }        
 
         private void BtnAdicionarItem_Click(object sender, RoutedEventArgs e)
         {
@@ -70,7 +70,6 @@ namespace MentoriaDevSTi3.View.UserControls
                 "PIX",
             };
 
-            UcPedidoVm.Quantidade = 1;
             UcPedidoVm.ItensAdicionados = new ObservableCollection<UcPedidoItemViewModel>();
 
         }
@@ -94,16 +93,26 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void LimparCampos()
         {
-            UcPedidoVm.Quantidade = 1;
+            UcPedidoVm.Quantidade = 0;
         }
 
         private bool ValidarPedido()
         {
+            /*if (UcPedidoVm.ListaClientes is null)
+                {
+                MessageBox.Show("Selecione um Cliente!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }*/
             if (CmbProduto.SelectedItem is null)
             {
                 MessageBox.Show("Selecione um produto!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
+            /*if (UcPedidoVm.ListaPagamentos is null)
+            {
+                MessageBox.Show("Selecione um método de pagamento!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }*/
 
             return true;
 
