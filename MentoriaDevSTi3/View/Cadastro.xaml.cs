@@ -22,7 +22,7 @@ namespace MentoriaDevSTi3.View
             InitializeComponent();
         }
 
-        private void BtnCadastrar_Click(object sender, RoutedEventArgs e)
+        private void BtnConfirmar_Click(object sender, RoutedEventArgs e)
         {
 
         }

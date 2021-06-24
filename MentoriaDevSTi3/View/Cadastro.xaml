@@ -80,12 +80,11 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0"
-                        x:Name="BtnCadastrar" Style="{StaticResource BtnRetangular}" Content="Cadastrar"
+                        x:Name="BtnConfirmar" Style="{StaticResource BtnRetangular}" Content="Confirmar"
                         Background="Gray" Foreground="White" Height="24" Width="70" 
                         HorizontalAlignment="Left" VerticalAlignment="Center"
                         Margin="20,0,0,0"
-                        Click="BtnCadastrar_Click"/>
-
+                        Click="BtnConfirmar_Click"/>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,21,0">
 
