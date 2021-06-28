@@ -61,7 +61,8 @@
                 
                 <StackPanel Grid.Column="2">
                     <Label Content="Quantidade"/>
-                    <TextBox Text="{Binding Quantidade}"/>
+                    <TextBox x:Name="CampoQuantidade" Text="{Binding Quantidade}"
+                             PreviewTextInput="CampoQuantidade_PreviewTextInput"/>
 
                 </StackPanel>
                 <StackPanel Grid.Column="4">
