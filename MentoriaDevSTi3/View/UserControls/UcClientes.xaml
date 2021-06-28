@@ -35,7 +35,9 @@
 
                 <StackPanel>
                     <Label Content="Nome"/>
-                    <TextBox Text="{Binding Nome}"/>
+                    <TextBox x:Name="CampoNome" 
+                             Text="{Binding Nome}"
+                             PreviewTextInput="CampoNome_PreviewTextInput"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
@@ -64,12 +66,14 @@
 
                 <StackPanel Grid.Column="2">
                     <Label Content="Endereço"/>
-                    <TextBox Text="{Binding Endereco}"/>
+                    <TextBox x:Name="CampoEndereco" Text="{Binding Endereco}"
+                             PreviewTextInput="CampoEndereco_PreviewTextInput"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
                     <Label Content="Cidade"/>
-                    <TextBox Text="{Binding Cidade}"/>
+                    <TextBox x:Name="CampoCidade" Text="{Binding Cidade}"
+                             PreviewTextInput="CampoCidade_PreviewTextInput"/>
                 </StackPanel>
 
                 <Button Grid.Column="6"

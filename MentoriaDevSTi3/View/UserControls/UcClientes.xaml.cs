@@ -48,10 +48,27 @@ namespace MentoriaDevSTi3.View.UserControls
 
             PreencherCampos(cliente);
         }
+        private void CampoNome_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z ]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
 
         private void TxtCep_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void CampoEndereco_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z ]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void CampoCidade_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z ]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
