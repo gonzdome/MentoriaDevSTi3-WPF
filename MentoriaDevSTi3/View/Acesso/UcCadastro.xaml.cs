@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MentoriaDevSTi3.View
+namespace MentoriaDevSTi3.View.Acesso
 {
     /// <summary>
-    /// Interaction logic for Cadastro.xaml
+    /// Interaction logic for UcCadastro.xaml
     /// </summary>
-    public partial class Cadastro : Window
+    public partial class UcCadastro : UserControl
     {
-        public Cadastro()
+        public UcCadastro()
         {
             InitializeComponent();
         }
@@ -29,7 +30,7 @@ namespace MentoriaDevSTi3.View
 
         private void BtnVoltar_Click(object sender, RoutedEventArgs e)
         {
-
+            AccessWindow.Main.Navegar(nameof(UcLogin));
         }
     }
 }

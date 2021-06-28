@@ -8,28 +8,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MentoriaDevSTi3.View
+namespace MentoriaDevSTi3.View.Acesso
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for UcLogin.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class UcLogin : UserControl
     {
-        public Login()
+        public UcLogin()
         {
             InitializeComponent();
         }
 
-        private void BtnEntrar_Click(object sender, RoutedEventArgs e)
+        protected void BtnEntrar_Click(object sender, RoutedEventArgs e)
         {
+
+            Window PrincipalWindow = new Principal();
+            PrincipalWindow.ShowDialog();
 
         }
 
         private void BtnRegistrarConta_Click(object sender, RoutedEventArgs e)
         {
-
+            AccessWindow.Main.Navegar(nameof(UcCadastro));
         }
     }
 }
