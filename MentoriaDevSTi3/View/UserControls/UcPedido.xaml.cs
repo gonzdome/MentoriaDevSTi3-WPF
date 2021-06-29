@@ -99,21 +99,27 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private bool ValidarPedido()
         {
-            /*if (UcPedidoVm.ListaClientes is null)
+            if (CampoCliente.SelectedItem is null)
                 {
-                MessageBox.Show("Selecione um Cliente!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Selecione um cliente!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
-            }*/
+            }
+            if (CampoPagamento.SelectedItem is null)
+            {
+                MessageBox.Show("Selecione um método de pagamento!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
             if (CmbProduto.SelectedItem is null)
             {
                 MessageBox.Show("Selecione um produto!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
-            /*if (UcPedidoVm.ListaPagamentos is null)
+            if (CampoQuantidade.Text is "0")
             {
-                MessageBox.Show("Selecione um método de pagamento!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("A quantidade de produtos não pode ser '0'!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
-            }*/
+            }
+
 
             return true;
 

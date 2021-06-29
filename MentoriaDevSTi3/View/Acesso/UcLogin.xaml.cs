@@ -18,7 +18,6 @@ namespace MentoriaDevSTi3.View.Acesso
             var Login = "teste";
             var Senha = "teste";
 
-
             if (login.Text == Login && senha.Password == Senha)
             {
                 login.Text = "";
@@ -38,5 +37,5 @@ namespace MentoriaDevSTi3.View.Acesso
             {
                 AccessWindow.Main.Navegar(nameof(UcCadastro));
             }
-        }
     }
+}

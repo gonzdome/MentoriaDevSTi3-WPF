@@ -56,8 +56,8 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void TxtCep_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]");
-            e.Handled = regex.IsMatch(e.Text);
+            /*Regex regex = new Regex("^[0-9]{5}-[0-9]{3}$");
+            e.Handled = regex.IsMatch(e.Text);*/
         }
 
         private void CampoCidade_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)

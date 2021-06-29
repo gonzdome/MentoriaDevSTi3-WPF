@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MentoriaDevSTi3.View.Acesso"
         mc:Ignorable="d"
-        Title="MentoriaDevSTi3" Height="768" Width="1024">
+        Title="MentoriaDevSTi3" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
     
     <Grid Background="#FFEAEAEA">
         <ContentControl x:Name="ConteudoAcesso"/>
