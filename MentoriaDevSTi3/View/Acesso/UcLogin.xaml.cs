@@ -21,6 +21,8 @@ namespace MentoriaDevSTi3.View.Acesso
 
             if (login.Text == Login && senha.Password == Senha)
             {
+                login.Text = "";
+                senha.Password = "";
 
                 Window PrincipalWindow = new Principal();
                 PrincipalWindow.ShowDialog();

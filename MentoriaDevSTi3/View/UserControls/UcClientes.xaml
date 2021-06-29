@@ -66,8 +66,7 @@
 
                 <StackPanel Grid.Column="2">
                     <Label Content="Endereço"/>
-                    <TextBox x:Name="CampoEndereco" Text="{Binding Endereco}"
-                             PreviewTextInput="CampoEndereco_PreviewTextInput"/>
+                    <TextBox x:Name="CampoEndereco" Text="{Binding Endereco}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
