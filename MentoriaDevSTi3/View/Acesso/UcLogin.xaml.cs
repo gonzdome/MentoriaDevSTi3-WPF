@@ -33,7 +33,7 @@ namespace MentoriaDevSTi3.View.Acesso
             }
         }
 
-            private void BtnRegistrarConta_Click(object sender, RoutedEventArgs e)
+        private void BtnRegistrarConta_Click(object sender, RoutedEventArgs e)
             {
                 AccessWindow.Main.Navegar(nameof(UcCadastro));
             }
