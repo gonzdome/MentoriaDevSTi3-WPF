@@ -44,26 +44,42 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
+
             var cliente = (sender as Button).Tag as ClienteViewModel;
 
             PreencherCampos(cliente);
+
         }
         private void CampoNome_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
+
             Regex regex = new Regex("[^a-zA-Z ]+");
             e.Handled = regex.IsMatch(e.Text);
+
         }
 
         private void TxtCep_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            /*Regex regex = new Regex("^[0-9]{5}-[0-9]{3}$");
-            e.Handled = regex.IsMatch(e.Text);*/
+
+            TxtCep.MaxLength = 9;
+
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
+            if (TxtCep.SelectionLength == 5)
+            {
+                TxtCep.Text.Insert(5, "-");
+            }
+
+
         }
 
         private void CampoCidade_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
+
             Regex regex = new Regex("[^a-zA-Z ]+");
             e.Handled = regex.IsMatch(e.Text);
+
         }
 
         private void PreencherCampos(ClienteViewModel cliente)

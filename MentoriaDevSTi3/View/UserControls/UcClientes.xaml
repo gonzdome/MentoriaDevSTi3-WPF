@@ -96,9 +96,6 @@
 
                 </Button>
             </Grid>
-
-            
-            
         </Grid>
 
         <ItemsControl Grid.Row="2" Background="White" BorderBrush="Gray" BorderThickness="1" Margin="10"
