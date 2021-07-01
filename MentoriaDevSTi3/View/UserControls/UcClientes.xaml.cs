@@ -66,12 +66,6 @@ namespace MentoriaDevSTi3.View.UserControls
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
 
-            if (TxtCep.SelectionLength == 5)
-            {
-                TxtCep.Text.Insert(5, "-");
-            }
-
-
         }
 
         private void CampoCidade_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
