@@ -61,7 +61,7 @@ namespace MentoriaDevSTi3.View.UserControls
         private void TxtCep_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
 
-            TxtCep.MaxLength = 9;
+            TxtCep.MaxLength = 8;
 
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
