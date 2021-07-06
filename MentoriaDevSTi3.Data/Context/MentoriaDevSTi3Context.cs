@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MentoriaDevSTi3.Data.Entidades;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace MentoriaDevSTi3.Data.Context
@@ -10,10 +11,15 @@ namespace MentoriaDevSTi3.Data.Context
             optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=mentoriadev;database=mentoria_dev;")
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
-                .LogTo(x => Debug.WriteLine(x))
+                .LogTo(x => Debug.WriteLine(x));
 
             base.OnConfiguring(optionsBuilder);
         }
+        
+        public virtual DbSet<Cliente> Clientes { get; set; }
+        public virtual DbSet<ItemPedido> ItensPedidos { get; set; }
+        public virtual DbSet<Pedido> Pedido { get; set; }
+        public virtual DbSet<Produto> Produtos { get; set; }
     }
 }
 

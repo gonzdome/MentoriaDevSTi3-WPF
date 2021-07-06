@@ -1,15 +1,7 @@
-﻿using MentoriaDevSTi3.View.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MentoriaDevSTi3.Data.Context;
+using MentoriaDevSTi3.View.UserControls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MentoriaDevSTi3.View
 {
@@ -21,6 +13,15 @@ namespace MentoriaDevSTi3.View
         public Principal()
         {
             InitializeComponent();
+            Testes();
+        }
+
+        private void Testes()
+        {
+
+            using var context = new MentoriaDevSTi3Context();
+
+            context.Database.EnsureCreated();
         }
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)
