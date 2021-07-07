@@ -1,5 +1,8 @@
 ﻿using MentoriaDevSTi3.Data.Context;
+using MentoriaDevSTi3.Data.Entidades;
 using MentoriaDevSTi3.View.UserControls;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,7 +24,22 @@ namespace MentoriaDevSTi3.View
 
             using var context = new MentoriaDevSTi3Context();
 
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
+
+            //context.Clientes.Add(new Cliente {
+            //    Nome = "Gabriel",
+            //    Cep = "17211410",
+            //    Cidade = "Jaú",
+            //    DataNascimento = DateTime.Now,
+            //    Endereco = "Rua Antonio Ferreira Dias n°265",
+
+            //});
+
+            var cliente = context.Clientes.First(x => x.Id == 1);
+
+            context.Clientes.Remove(cliente);
+            
+            context.SaveChanges();
         }
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)

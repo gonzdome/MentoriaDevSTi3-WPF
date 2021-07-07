@@ -18,7 +18,7 @@ namespace MentoriaDevSTi3.Data.Context
         
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<ItemPedido> ItensPedidos { get; set; }
-        public virtual DbSet<Pedido> Pedido { get; set; }
+        public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
     }
 }
