@@ -16,37 +16,12 @@ namespace MentoriaDevSTi3.View
         public Principal()
         {
             InitializeComponent();
-            Testes();
-        }
-
-        private void Testes()
-        {
-
-            using var context = new MentoriaDevSTi3Context();
-
-            //context.Database.EnsureCreated();
-
-            //context.Clientes.Add(new Cliente {
-            //    Nome = "Gabriel",
-            //    Cep = "17211410",
-            //    Cidade = "Jaú",
-            //    DataNascimento = DateTime.Now,
-            //    Endereco = "Rua Antonio Ferreira Dias n°265",
-
-            //});
-
-            var cliente = context.Clientes.First(x => x.Id == 1);
-
-            context.Clientes.Remove(cliente);
-            
-            context.SaveChanges();
         }
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
             InicializarUc(sender);
         }
-
 
         private void InicializarUc(object sender)
         {
