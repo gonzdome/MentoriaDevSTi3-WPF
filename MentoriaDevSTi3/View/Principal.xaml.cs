@@ -16,6 +16,13 @@ namespace MentoriaDevSTi3.View
         public Principal()
         {
             InitializeComponent();
+            AplicarMigracoes();
+        }
+
+        private void AplicarMigracoes()
+        {
+            using var context = new MentoriaDevSTi3Context();
+            context.AplicarMigracoes();
         }
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)

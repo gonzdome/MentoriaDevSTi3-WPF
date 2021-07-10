@@ -2,6 +2,7 @@
 using MentoriaDevSTi3.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MentoriaDevSTi3.Data.Context
 {
@@ -32,6 +33,15 @@ namespace MentoriaDevSTi3.Data.Context
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public void AplicarMigracoes()
+        {
+            if (Database.GetPendingMigrations().Any())
+            {
+                Database.Migrate();
+            }
+        }
+
     }
 }
 
