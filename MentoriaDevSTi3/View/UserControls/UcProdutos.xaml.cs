@@ -1,4 +1,5 @@
-﻿using MentoriaDevSTi3.ViewModel;
+﻿using MentoriaDevSTi3.Business;
+using MentoriaDevSTi3.ViewModel;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace MentoriaDevSTi3.View.UserControls
 
             DataContext = UcProdutoVm;
 
-            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>();
+            CarregarRegistros();
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
@@ -61,6 +62,10 @@ namespace MentoriaDevSTi3.View.UserControls
             UcProdutoVm.Alteracao = true;
         }
 
+        private void CarregarRegistros()
+        {
+            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>(new ProdutoBusiness().Listar());
+        }
 
         private void AdicionarProduto()
         {
@@ -69,7 +74,9 @@ namespace MentoriaDevSTi3.View.UserControls
                 Nome = UcProdutoVm.Nome,
                 Valor = UcProdutoVm.Valor
             };
-            UcProdutoVm.ProdutosAdicionados.Add(novoProduto);
+
+            new ProdutoBusiness().Adicionar(novoProduto);
+            CarregarRegistros();
         }
 
         private void AlterarProduto()
