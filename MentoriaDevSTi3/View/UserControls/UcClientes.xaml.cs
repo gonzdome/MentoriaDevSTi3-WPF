@@ -1,4 +1,5 @@
-﻿using MentoriaDevSTi3.ViewModel;
+﻿using MentoriaDevSTi3.Business;
+using MentoriaDevSTi3.ViewModel;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -20,9 +21,9 @@ namespace MentoriaDevSTi3.View.UserControls
             InitializeComponent();
 
             DataContext = UcClienteVm;
-            UcClienteVm.ClientesAdicionados = new ObservableCollection<ClienteViewModel>();
             UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
 
+            CarregarRegistros();
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
@@ -50,6 +51,14 @@ namespace MentoriaDevSTi3.View.UserControls
             PreencherCampos(cliente);
 
         }
+
+        private void BtnRemover_Click(object sender, RoutedEventArgs e)
+        {
+            var cliente = (sender as Button).Tag as ClienteViewModel;
+
+            RemoverCliente(cliente.Id);
+        }
+
         private void CampoNome_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
 
@@ -62,7 +71,7 @@ namespace MentoriaDevSTi3.View.UserControls
         {
 
             TxtCep.MaxLength = 8;
-
+            
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
 
@@ -87,6 +96,11 @@ namespace MentoriaDevSTi3.View.UserControls
             UcClienteVm.Alteracao = true;
         }
 
+        private void CarregarRegistros()
+        {
+            UcClienteVm.ClientesAdicionados = new ObservableCollection<ClienteViewModel>(new ClienteBusiness().Listar());
+        }
+
         private void AdicionarCliente()
         {
             var novoCliente = new ClienteViewModel
@@ -98,23 +112,51 @@ namespace MentoriaDevSTi3.View.UserControls
                 Cidade = UcClienteVm.Cidade
             };
 
-            UcClienteVm.ClientesAdicionados.Add(novoCliente);
+            new ClienteBusiness().Adicionar(novoCliente);
+
+            CarregarRegistros();
         }
 
         private void AlterarCliente()
         {
-            //desenvolvido no banco de dados
+            var clienteAlteracao = new ClienteViewModel
+            {
+                Id = UcClienteVm.Id,
+                Nome = UcClienteVm.Nome,
+                DataNascimento = UcClienteVm.DataNascimento,
+                Endereco = UcClienteVm.Endereco,
+                Cidade = UcClienteVm.Cidade,
+                Cep = UcClienteVm.Cep
+            };
+
+            new ClienteBusiness().Alterar(clienteAlteracao);
+            CarregarRegistros();
+        }
+
+        private void RemoverCliente(long id)
+        {
+            var resultado = MessageBox.Show("Tem certeza que deseja remover esse Cliente?", "Atenção",
+               MessageBoxButton.YesNo,
+               MessageBoxImage.Warning);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                new ClienteBusiness().Remover(id);
+                CarregarRegistros();
+                LimparCampos();
+            }
         }
 
         private void LimparCampos()
         {
             UcClienteVm.Nome = "";
             UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
-            UcClienteVm.Cep = 0;
+            UcClienteVm.Cep = "0";
             UcClienteVm.Endereco = "";
             UcClienteVm.Cidade = "";
             UcClienteVm.Alteracao = false;
         }
+
         private bool ValidarCliente()
         {
 
@@ -124,7 +166,7 @@ namespace MentoriaDevSTi3.View.UserControls
             return false;
 
         }
-        if (UcClienteVm.Cep is 0)
+        if (string.IsNullOrEmpty(UcClienteVm.Cep))
         {
             MessageBox.Show("O campo 'Cep' é obrigatório!", "Atenção!", MessageBoxButton.OK, MessageBoxImage.Information);
             return false;

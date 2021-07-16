@@ -50,12 +50,14 @@ namespace MentoriaDevSTi3.Business
         public List<ProdutoViewModel> Listar()
         {
             return _context.Produtos.AsNoTracking()
+
                 .Select(s => new ProdutoViewModel
                 {
                     Id = s.Id,
                     Nome = s.Nome,
                     Valor = s.Valor
-                }).ToList();
+                }).ToList()
+                .OrderBy(x => x.Nome).ToList();
         }
 
     }

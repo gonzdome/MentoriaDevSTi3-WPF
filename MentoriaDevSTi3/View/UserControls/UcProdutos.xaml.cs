@@ -1,5 +1,6 @@
 ﻿using MentoriaDevSTi3.Business;
 using MentoriaDevSTi3.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -47,6 +48,12 @@ namespace MentoriaDevSTi3.View.UserControls
             PreencherCampos(produto);
         }
 
+        private void BtnRemover_Click(object sender, RoutedEventArgs e)
+        {
+            var produto = (sender as Button).Tag as ProdutoViewModel;
+            RemoverProduto(produto.Id);
+        }
+
         private void TxtValor_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -56,6 +63,7 @@ namespace MentoriaDevSTi3.View.UserControls
         private void PreencherCampos(ProdutoViewModel produto)
         {
 
+            UcProdutoVm.Id = produto.Id;
             UcProdutoVm.Nome = produto.Nome;
             UcProdutoVm.Valor = produto.Valor;
 
@@ -81,11 +89,34 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void AlterarProduto()
         {
-            //será desenvolvido na aula de banco de dados.
+            var produtoAlteracao = new ProdutoViewModel
+            {
+                Id = UcProdutoVm.Id,
+                Nome = UcProdutoVm.Nome,
+                Valor = UcProdutoVm.Valor
+            };
+
+            new ProdutoBusiness().Alterar(produtoAlteracao);
+            CarregarRegistros();
+        }
+
+        private void RemoverProduto(long id)
+        {
+            var resultado = MessageBox.Show("Tem certeza que deseja remover o Produto?", "Atenção", 
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                new ProdutoBusiness().Remover(id);
+                CarregarRegistros();
+                LimparCampos();
+            }
         }
 
         private void LimparCampos()
         {
+            UcProdutoVm.Id = 0;
             UcProdutoVm.Nome = "";
             UcProdutoVm.Valor = 0;
             UcProdutoVm.Alteracao = false;
@@ -101,8 +132,6 @@ namespace MentoriaDevSTi3.View.UserControls
             }
 
             return true;
-
         }
-
     }
 }
