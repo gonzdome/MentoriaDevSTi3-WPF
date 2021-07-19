@@ -87,6 +87,7 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void PreencherCampos(ClienteViewModel cliente)
         {
+            UcClienteVm.Id = cliente.Id;
             UcClienteVm.Nome = cliente.Nome;
             UcClienteVm.DataNascimento = cliente.DataNascimento;
             UcClienteVm.Cep = cliente.Cep;
