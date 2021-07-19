@@ -1,4 +1,5 @@
-﻿using MentoriaDevSTi3.ViewModel;
+﻿using MentoriaDevSTi3.Business;
+using MentoriaDevSTi3.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -44,24 +45,17 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void BtnFinalizarPedido_Click(object sender, RoutedEventArgs e)
         {
-
+            FinalizarPedido();
         }
 
         private void IncializarOperação()
         {
             DataContext = UcPedidoVm;
 
-            UcPedidoVm.ListaClientes = new ObservableCollection<ClienteViewModel>
-            {
-                new ClienteViewModel {Nome="1"},
-                new ClienteViewModel {Nome="2"}
-            };
-            UcPedidoVm.ListaProdutos = new ObservableCollection<ProdutoViewModel>
-            {
-                new ProdutoViewModel {Nome="Produto 1", Valor = 10},
-                new ProdutoViewModel {Nome="Produto 2", Valor = 20},
+            UcPedidoVm.ListaClientes = new ObservableCollection<ClienteViewModel>(new ClienteBusiness().Listar());
 
-            };
+            UcPedidoVm.ListaProdutos = new ObservableCollection<ProdutoViewModel>(new ProdutoBusiness().Listar());
+
             UcPedidoVm.ListaPagamentos = new ObservableCollection<string>
             {
                 "Dinheiro",
@@ -84,17 +78,59 @@ namespace MentoriaDevSTi3.View.UserControls
                 Nome = produtoSelecionado.Nome,
                 Quantidade = UcPedidoVm.Quantidade,
                 ValorUnit = UcPedidoVm.ValorUnit,
-                ValorTotalItem = UcPedidoVm.Quantidade * UcPedidoVm.ValorUnit
+                ValorTotalItem = UcPedidoVm.Quantidade * UcPedidoVm.ValorUnit,
+                ProdutoId = produtoSelecionado.Id
+
             };
 
             UcPedidoVm.ItensAdicionados.Add(itemVm);
 
             UcPedidoVm.ValorTotalPedido = UcPedidoVm.ItensAdicionados.Sum(i => i.ValorTotalItem);
+
+            LimparCampos();
+        }
+
+        private void FinalizarPedido()
+        {
+            var clienteSelecionado = CampoCliente.SelectedItem as ClienteViewModel;
+            var formaPagamentoSelecionada = CampoPagamento.SelectedItem as string;
+
+            var pedidoViewModel = new PedidoViewModel
+            {
+                ClienteId = clienteSelecionado.Id,
+                FormaPagamento = formaPagamentoSelecionada,
+                Valor = UcPedidoVm.ValorTotalPedido,
+                ItensPedido = UcPedidoVm.ItensAdicionados.Select(s => new ItensPedidoViewModel
+                {
+                    ProdutoId = s.ProdutoId,
+                    Quantidade = s.Quantidade,
+                    Valor = s.ValorTotalItem
+                }).ToList()
+            };
+
+            new PedidoBusiness().Adicionar(pedidoViewModel);
+
+            MessageBox.Show("Pedido realizado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            LimparTodosCampos();
+
         }
 
         private void LimparCampos()
         {
-            UcPedidoVm.Quantidade = 0;
+            UcPedidoVm.Quantidade = 1;
+            CmbProduto.SelectedItem = null;
+            UcPedidoVm.ValorUnit = 0;
+        }
+
+        private void LimparTodosCampos()
+        {
+            UcPedidoVm.ItensAdicionados = new ObservableCollection<UcPedidoItemViewModel>();
+            UcPedidoVm.ValorTotalPedido = 0;
+            CampoCliente.SelectedItem = null;
+            CampoPagamento.SelectedItem = null;
+
+            LimparCampos();
         }
 
         private bool ValidarPedido()
@@ -127,6 +163,7 @@ namespace MentoriaDevSTi3.View.UserControls
 
         private void CampoQuantidade_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
+
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
